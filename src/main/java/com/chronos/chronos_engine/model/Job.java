@@ -12,6 +12,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import tools.jackson.databind.JsonNode;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -94,6 +96,10 @@ public class Job {
     // Link to stats
     @OneToOne(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private JobStatistics jobStatistics;
+
+    // collection field
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<JobExecution> executions = new ArrayList<>();
 
     // Audit
     @JdbcTypeCode(SqlTypes.JSON)
