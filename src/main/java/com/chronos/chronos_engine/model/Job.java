@@ -61,6 +61,10 @@ public class Job {
     @Column(columnDefinition = "jsonb")
     private JsonNode payload;
 
+    // to save from accidental resets
+    @Column(name = "current_retry_count")
+    private int currentRetryCount = 0;
+
     @Embedded
     private JobRetryConfig retryConfig = new JobRetryConfig();
 
@@ -98,7 +102,6 @@ public class Job {
     private JobStatistics jobStatistics;
 
     // collection field
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<JobExecution> executions = new ArrayList<>();
 
     // Audit

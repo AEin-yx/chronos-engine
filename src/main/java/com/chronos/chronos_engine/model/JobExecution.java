@@ -10,7 +10,10 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "job_executions")
+@Table(name = "job_executions", indexes = {
+        @Index(name = "idx_exec_job", columnList = "job_id"),
+        @Index(name = "idx_exec_run", columnList = "run_id")
+})
 @Getter @Setter
 public class JobExecution {
 

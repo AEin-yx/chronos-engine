@@ -13,9 +13,6 @@ public class JobRetryConfig {
     @Column(name = "max_retries")
     private int maxRetries = 0;
 
-    @Column(name = "retry_count")
-    private int retryCount = 0;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "retry_backoff_strategy", length = 20)
     private Retrybackoff retryBackoffStrategy = Retrybackoff.FIXED;
