@@ -1,11 +1,12 @@
 package com.chronos.chronos_engine.model;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import com.fasterxml.jackson.databind.JsonNode;
+
 import java.time.ZonedDateTime;
 import java.util.UUID;
 

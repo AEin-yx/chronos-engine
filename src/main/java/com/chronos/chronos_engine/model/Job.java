@@ -1,7 +1,6 @@
 package com.chronos.chronos_engine.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -9,11 +8,9 @@ import org.hibernate.type.SqlTypes;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import tools.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -100,9 +97,6 @@ public class Job {
     // Link to stats
     @OneToOne(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private JobStatistics jobStatistics;
-
-    // collection field
-    private List<JobExecution> executions = new ArrayList<>();
 
     // Audit
     @JdbcTypeCode(SqlTypes.JSON)
